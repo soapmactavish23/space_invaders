@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://script/ship.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Ship-sheet.png" type="Texture" id=2]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=3]
 
 [node name="game" type="Node"]
 
@@ -36,5 +37,21 @@ invert/border = 100.0
 
 texture = ExtResource( 2 )
 hframes = 3
+
+[node name="enemy" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 37, 122 )
+
+[node name="enemy1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 135, 122 )
+transform/rot = 0.190661
+tipo = 1
+
+[node name="enemy2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 92, 159 )
+transform/rot = 0.190661
+tipo = 2
 
 
