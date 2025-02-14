@@ -7,6 +7,7 @@
 
 [node name="ship" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 90, 281 )
 input/pickable = true
 gravity_vec = Vector2( 0, 1 )
