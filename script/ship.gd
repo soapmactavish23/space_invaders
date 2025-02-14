@@ -4,6 +4,7 @@ const VEL = 80
 
 var left
 var right
+var lazer
 
 var dir = 0
 
@@ -15,6 +16,7 @@ func _process(delta):
 	
 	right = Input.is_action_pressed("ui_right")
 	left = Input.is_action_pressed("ui_left")
+	lazer = Input.is_action_pressed("disparo")
 	
 	if right:
 		dir += 1
