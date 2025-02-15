@@ -1,0 +1,16 @@
+extends Area2D
+
+const vel = 120
+const dir = Vector2(0, 1)
+
+func _ready():
+	set_process(true)
+	
+func _process(delta):
+	translate(dir * vel * delta)
+
+func destroy(obj):
+	queue_free()
+
+func _on_alien_shot_area_enter( area ):
+	pass # replace with function body
