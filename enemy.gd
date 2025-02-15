@@ -1,6 +1,6 @@
 extends Area2D
 
-export (int, "A", "B", "C") var tipo = 0
+export (int, "A", "B", "C") var tipo = 0 setget set_tipo
 
 var score = 0
 
@@ -20,6 +20,14 @@ var atributes = [
 ]
 
 func _ready():
+	pass
+	
+func _draw():
 	var atribute = atributes[tipo]
 	get_node("sprite").set_texture(atribute.texture)
 	score = atribute.score
+
+func set_tipo(val):
+	tipo = val
+	if is_inside_tree() and get_tree().is_editor_hint():
+		update()
