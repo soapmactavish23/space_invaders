@@ -31,3 +31,6 @@ func set_tipo(val):
 	tipo = val
 	if is_inside_tree() and get_tree().is_editor_hint():
 		update()
+		
+func destroy(obj):
+	queue_free()

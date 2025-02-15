@@ -1,6 +1,6 @@
 extends Area2D
 
-var vel = 180
+var vel = 250
 var dir = Vector2(0, -1)
 
 func _ready():
@@ -12,3 +12,11 @@ func _process(delta):
 	
 	if get_global_pos().y < 0:
 		queue_free()
+
+func _on_ship_shot_area_enter( area ):
+	if area.has_method("destroy"):
+		area.destroy(self)
+		destroy()
+
+func destroy():
+	queue_free()
