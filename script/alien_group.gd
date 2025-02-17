@@ -1,12 +1,17 @@
 extends Node2D
 
 var pre_alien_shot = preload("res://scenes/alien_shot.tscn")
+var pre_alien_explosion = preload("res://scenes/alien_explosion.tscn")
 
 var dir = 1
 const vel = Vector2(6, 0)
 
 func _ready():
 	get_node("timer_shot").start()
+	
+	for alien in get_node("aliens").get_children():
+		alien.connect("destroyed", self, "on_alien_destroied")
+	
 
 func shoot():
 	var n_aliens = get_node("aliens").get_child_count()
@@ -41,4 +46,7 @@ func _on_timer_move_timeout():
 	else:
 		translate(vel * dir)
 	
-	
+func on_alien_destroied(alien):
+	var alien_exp = pre_alien_explosion.instance()
+	get_parent().add_child(alien_exp)
+	alien_exp.set_global_pos(alien.get_global_pos())
