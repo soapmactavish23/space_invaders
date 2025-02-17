@@ -8,6 +8,8 @@ func _ready():
 	
 func _process(delta):
 	translate(dir * vel * delta)
+	if get_global_pos().y > 300:
+		destroy(self)
 
 func destroy(obj):
 	queue_free()

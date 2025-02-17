@@ -28,6 +28,7 @@ tracks/0/keys = {
 
 [node name="alien_shot" type="Area2D"]
 
+transform/pos = Vector2( 0, 5.13878 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
