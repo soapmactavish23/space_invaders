@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://script/ship.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Ship-sheet.png" type="Texture" id=2]
 [ext_resource path="res://script/alien_group.gd" type="Script" id=3]
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/shield.tscn" type="PackedScene" id=5]
 
 [node name="game" type="Node"]
 
@@ -45,6 +46,8 @@ hframes = 3
 script/script = ExtResource( 3 )
 
 [node name="aliens" type="Node2D" parent="alien_group"]
+
+editor/display_folded = true
 
 [node name="enemy" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
@@ -235,6 +238,22 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
+
+[node name="shield" parent="alien_group/timer_move" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 48, 252 )
+
+[node name="shield1" parent="alien_group/timer_move" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 80, 252 )
+
+[node name="shield2" parent="alien_group/timer_move" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 112, 252 )
+
+[node name="shield3" parent="alien_group/timer_move" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 144, 252 )
 
 [connection signal="timeout" from="alien_group/timer_shot" to="alien_group" method="_on_timer_shot_timeout"]
 

@@ -15,4 +15,6 @@ func destroy(obj):
 	queue_free()
 
 func _on_alien_shot_area_enter( area ):
-	pass # replace with function body
+	if area.has_method("destroy"):
+		area.destroy(self)
+		destroy(self)
