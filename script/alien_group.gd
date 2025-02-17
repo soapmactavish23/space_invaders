@@ -2,6 +2,9 @@ extends Node2D
 
 var pre_alien_shot = preload("res://scenes/alien_shot.tscn")
 
+var dir = 1
+const vel = Vector2(6, 0)
+
 func _ready():
 	get_node("timer_shot").start()
 
@@ -14,7 +17,28 @@ func shoot():
 	
 
 
-
 func _on_timer_shot_timeout():
 	get_node("timer_shot").set_wait_time(rand_range(.5, 3))
 	shoot()
+
+
+func _on_timer_move_timeout():
+	var border = false
+	
+	for alien in get_node("aliens").get_children():
+		alien.next_frame()
+		if alien.get_global_pos().x > 170 and dir > 0:
+			dir = -1
+			border = true
+		if alien.get_global_pos().x < 10 and dir < 0:
+			dir = 1
+			border = true
+	
+	if border:
+		translate(Vector2(0, 8))
+		if get_node("timer_move").get_wait_time() > .11:
+			get_node("timer_move").set_wait_time(get_node("timer_move").get_wait_time() - .1)
+	else:
+		translate(vel * dir)
+	
+	
