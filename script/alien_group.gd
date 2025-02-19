@@ -1,10 +1,13 @@
 extends Node2D
 
+const vel = Vector2(6, 0)
+
 var pre_alien_shot = preload("res://scenes/alien_shot.tscn")
 var pre_alien_explosion = preload("res://scenes/alien_explosion.tscn")
 
 var dir = 1
-const vel = Vector2(6, 0)
+
+signal enemy_down(obj)
 
 func _ready():
 	get_node("timer_shot").start()
@@ -47,6 +50,7 @@ func _on_timer_move_timeout():
 		translate(vel * dir)
 	
 func on_alien_destroied(alien):
+	emit_signal("enemy_down", alien)
 	var alien_exp = pre_alien_explosion.instance()
 	get_parent().add_child(alien_exp)
 	alien_exp.set_global_pos(alien.get_global_pos())
