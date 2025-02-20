@@ -63,5 +63,15 @@ func _on_timer_mother_ship_timeout():
 	restart_timer_mother_ship()
 
 func restart_timer_mother_ship():
-	get_node("timer_mother_ship").set_wait_time(rand_range(2, 10))
+	get_node("timer_mother_ship").set_wait_time(rand_range(6, 15))
 	get_node("timer_mother_ship").start()
+	
+func stop_all():
+	get_node("timer_mother_ship").stop()
+	get_node("timer_shot").stop()
+	get_node("timer_move").stop()
+	
+func start_all():
+	get_node("timer_mother_ship").start()
+	get_node("timer_shot").start()
+	get_node("timer_move").start()

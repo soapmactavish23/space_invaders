@@ -11,6 +11,11 @@ var prev_lazer = false
 
 var dir = 0
 
+var alive = true
+
+signal destroied
+signal respawn 
+
 func _ready():
 	set_process(true)
 	
@@ -41,3 +46,15 @@ func _process(delta):
 		shot.set_global_pos(get_global_pos())
 		
 	prev_lazer = lazer
+
+func destroy(obj):
+	if alive:
+		alive = false
+		set_process(false)
+		emit_signal("destroied")
+		get_node("anim").play("explode")
+		yield(get_node("anim"), "finished")
+		emit_signal("respawn")
+		set_process(true)
+		alive = true
+		get_node("sprite").set_frame(0)

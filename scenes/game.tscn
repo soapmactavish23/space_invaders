@@ -1,230 +1,199 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://script/game.gd" type="Script" id=1]
-[ext_resource path="res://script/ship.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/Ship-sheet.png" type="Texture" id=3]
-[ext_resource path="res://script/alien_group.gd" type="Script" id=4]
-[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/shield.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fonts/system.fnt" type="BitmapFont" id=7]
-[ext_resource path="res://scenes/mother_ship.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/ship.tscn" type="PackedScene" id=2]
+[ext_resource path="res://script/alien_group.gd" type="Script" id=3]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fonts/system.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://scenes/mother_ship.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/shield.tscn" type="PackedScene" id=7]
 
 [node name="game" type="Node"]
 
 script/script = ExtResource( 1 )
 
-[node name="ship" type="Area2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 90, 281 )
-input/pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision/mask = 0
-script/script = ExtResource( 2 )
-
-[node name="poly" type="Polygon2D" parent="ship"]
-
-visibility/visible = false
-transform/pos = Vector2( -1, 2 )
-polygon = Vector2Array( 1, -6, 7, -3, 9, 2, -7, 2, -6, -2 )
-uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
-[node name="sprite" type="Sprite" parent="ship"]
-
-texture = ExtResource( 3 )
-hframes = 3
+[node name="ship" parent="." instance=ExtResource( 2 )]
 
 [node name="alien_group" type="Node2D" parent="."]
 
-script/script = ExtResource( 4 )
+editor/display_folded = true
+script/script = ExtResource( 3 )
 
 [node name="aliens" type="Node2D" parent="alien_group"]
 
 editor/display_folded = true
 
-[node name="enemy" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 32, 44.1063 )
 
-[node name="enemy5" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy5" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 32, 56.1063 )
 tipo = 1
 
-[node name="enemy6" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy6" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 32, 68.1063 )
 tipo = 2
 
-[node name="enemy7" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy7" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 32, 80.1063 )
 tipo = 2
 
-[node name="enemy4" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy4" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 96, 44.1063 )
 
-[node name="enemy5 3" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy5 3" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 96, 56.1063 )
 tipo = 1
 
-[node name="enemy54" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy54" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 96, 68.1063 )
 tipo = 2
 
-[node name="enemy57 4" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy57 4" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 96, 80.1063 )
 tipo = 2
 
-[node name="enemy1" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy1" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 80, 44.1063 )
 transform/rot = 0.190661
 
-[node name="enemy5 5" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy5 5" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 80, 56.1063 )
 transform/rot = 0.190661
 tipo = 1
 
-[node name="enemy56" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy56" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 80, 68.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy57 2" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy57 2" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 80, 80.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy4 4" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy4 4" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 112, 44.1063 )
 transform/rot = 0.190661
 
-[node name="enemy45" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy45" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 112, 56.1063 )
 transform/rot = 0.190661
 tipo = 1
 
-[node name="enemy46 2" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy46 2" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 112, 68.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy463" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy463" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 112, 80.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy3" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy3" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 64, 44.1063 )
 transform/rot = 0.190661
 
-[node name="enemy5 2" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy5 2" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 64, 56.1063 )
 transform/rot = 0.190661
 tipo = 1
 
-[node name="enemy53" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy53" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 64, 68.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy57" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy57" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 64, 80.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy4 2" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy4 2" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 144, 44.1063 )
 transform/rot = 0.190661
 
-[node name="enemy43" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy43" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 144, 56.1063 )
 transform/rot = 0.190661
 tipo = 1
 
-[node name="enemy46" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy46" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 144, 68.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy47" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy47" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 144, 80.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy2" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy2" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 48, 44.1063 )
 transform/rot = 0.190661
 
-[node name="enemy5 4" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy5 4" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 48, 56.1063 )
 transform/rot = 0.190661
 tipo = 1
 
-[node name="enemy55" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy55" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 48, 68.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy57 3" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy57 3" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 48, 80.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy4 3" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy4 3" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 44.1063 )
 transform/rot = 0.190661
 
-[node name="enemy44" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy44" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 56.1063 )
 transform/rot = 0.190661
 tipo = 1
 
-[node name="enemy46 3" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy46 3" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 68.1063 )
 transform/rot = 0.190661
 tipo = 2
 
-[node name="enemy464" parent="alien_group/aliens" instance=ExtResource( 5 )]
+[node name="enemy464" parent="alien_group/aliens" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 80.1063 )
 transform/rot = 0.190661
@@ -239,27 +208,10 @@ autostart = false
 
 [node name="timer_move" type="Timer" parent="alien_group"]
 
-editor/display_folded = true
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
-
-[node name="shield" parent="alien_group/timer_move" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 48, 252 )
-
-[node name="shield1" parent="alien_group/timer_move" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 80, 252 )
-
-[node name="shield2" parent="alien_group/timer_move" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 112, 252 )
-
-[node name="shield3" parent="alien_group/timer_move" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 144, 252 )
 
 [node name="timer_mother_ship" type="Timer" parent="alien_group"]
 
@@ -282,16 +234,36 @@ margin/left = 0.0
 margin/top = 5.0
 margin/right = 180.0
 margin/bottom = 13.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 5 )
 text = "9990999"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="mother_ship" parent="." instance=ExtResource( 8 )]
+[node name="mother_ship" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 208, 12 )
+
+[node name="shield" type="Node" parent="."]
+
+editor/display_folded = true
+
+[node name="shield" parent="shield" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 48, 252 )
+
+[node name="shield1" parent="shield" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 80, 252 )
+
+[node name="shield2" parent="shield" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 112, 252 )
+
+[node name="shield3" parent="shield" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 144, 252 )
 
 [connection signal="timeout" from="alien_group/timer_shot" to="alien_group" method="_on_timer_shot_timeout"]
 

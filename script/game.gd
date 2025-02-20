@@ -3,9 +3,11 @@ extends Node
 var score = 0
 
 func _ready():
+	randomize()
 	update_score()
 	get_node("alien_group").connect("enemy_down", self, "on_alien_group_enemy_down")
-	pass
+	get_node("ship").connect("destroied", self, "on_ship_destroied")
+	get_node("ship").connect("respawn", self, "on_ship_respawn")
 
 func on_alien_group_enemy_down(alien):
 	score += alien.score
@@ -13,3 +15,9 @@ func on_alien_group_enemy_down(alien):
 
 func update_score():
 	get_node("HUD/score").set_text(str(score))
+
+func on_ship_destroied():
+	get_node("alien_group").stop_all()
+
+func on_ship_respawn():
+	get_node("alien_group").start_all()
