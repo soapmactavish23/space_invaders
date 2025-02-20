@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://script/game.gd" type="Script" id=1]
 [ext_resource path="res://script/ship.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/shield.tscn" type="PackedScene" id=6]
 [ext_resource path="res://fonts/system.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://scenes/mother_ship.tscn" type="PackedScene" id=8]
 
 [node name="game" type="Node"]
 
@@ -47,10 +48,11 @@ hframes = 3
 
 [node name="alien_group" type="Node2D" parent="."]
 
-editor/display_folded = true
 script/script = ExtResource( 4 )
 
 [node name="aliens" type="Node2D" parent="alien_group"]
+
+editor/display_folded = true
 
 [node name="enemy" parent="alien_group/aliens" instance=ExtResource( 5 )]
 
@@ -237,6 +239,7 @@ autostart = false
 
 [node name="timer_move" type="Timer" parent="alien_group"]
 
+editor/display_folded = true
 process_mode = 1
 wait_time = 1.0
 one_shot = false
@@ -258,7 +261,16 @@ transform/pos = Vector2( 112, 252 )
 
 transform/pos = Vector2( 144, 252 )
 
+[node name="timer_mother_ship" type="Timer" parent="alien_group"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = true
+
 [node name="HUD" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="score" type="Label" parent="HUD"]
 
@@ -277,8 +289,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="mother_ship" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 208, 12 )
+
 [connection signal="timeout" from="alien_group/timer_shot" to="alien_group" method="_on_timer_shot_timeout"]
 
 [connection signal="timeout" from="alien_group/timer_move" to="alien_group" method="_on_timer_move_timeout"]
+
+[connection signal="timeout" from="alien_group/timer_mother_ship" to="alien_group" method="_on_timer_mother_ship_timeout"]
 
 

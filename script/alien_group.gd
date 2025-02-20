@@ -4,6 +4,7 @@ const vel = Vector2(6, 0)
 
 var pre_alien_shot = preload("res://scenes/alien_shot.tscn")
 var pre_alien_explosion = preload("res://scenes/alien_explosion.tscn")
+var pre_mother_ship = preload("res://scenes/mother_ship.tscn")
 
 var dir = 1
 
@@ -11,7 +12,7 @@ signal enemy_down(obj)
 
 func _ready():
 	get_node("timer_shot").start()
-	
+	restart_timer_mother_ship()
 	for alien in get_node("aliens").get_children():
 		alien.connect("destroyed", self, "on_alien_destroied")
 	
@@ -54,3 +55,13 @@ func on_alien_destroied(alien):
 	var alien_exp = pre_alien_explosion.instance()
 	get_parent().add_child(alien_exp)
 	alien_exp.set_global_pos(alien.get_global_pos())
+
+func _on_timer_mother_ship_timeout():
+	var mother_ship = pre_mother_ship.instance()
+	mother_ship.connect("destroyed", self, "on_alien_destroied")
+	get_parent().add_child(mother_ship)
+	restart_timer_mother_ship()
+
+func restart_timer_mother_ship():
+	get_node("timer_mother_ship").set_wait_time(rand_range(2, 10))
+	get_node("timer_mother_ship").start()
