@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/shield.tscn" type="PackedScene" id=6]
 [ext_resource path="res://fonts/system.fnt" type="BitmapFont" id=7]
 [ext_resource path="res://script/life_draw.gd" type="Script" id=8]
-[ext_resource path="res://assets/sprites/barreira_sheet.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/Ship-sheet.png" type="Texture" id=9]
 
 [node name="game" type="Node"]
 
@@ -228,8 +228,6 @@ transform/pos = Vector2( 208, 12 )
 
 [node name="shield" type="Node" parent="."]
 
-editor/display_folded = true
-
 [node name="shield" parent="shield" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 48, 252 )
@@ -254,10 +252,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 5.0
-margin/right = 180.0
-margin/bottom = 13.0
+margin/left = 140.0
+margin/top = 11.0
+margin/right = 201.0
+margin/bottom = 19.0
 custom_fonts/font = ExtResource( 7 )
 text = "9990999"
 align = 1
@@ -267,9 +265,10 @@ max_lines_visible = -1
 
 [node name="life_draw" type="Node2D" parent="HUD"]
 
-transform/pos = Vector2( 0, 12 )
+transform/pos = Vector2( 0, 10 )
 script/script = ExtResource( 8 )
 textura = ExtResource( 9 )
+lifes = 5
 
 [connection signal="timeout" from="alien_group/timer_shot" to="alien_group" method="_on_timer_shot_timeout"]
 

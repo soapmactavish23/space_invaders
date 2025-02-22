@@ -18,6 +18,7 @@ func update_score():
 
 func on_ship_destroied():
 	get_node("alien_group").stop_all()
+	get_node("HUD/life_draw").lifes -= 1
 
 func on_ship_respawn():
 	get_node("alien_group").start_all()
