@@ -10,6 +10,7 @@ var dir = 1
 
 signal enemy_down(obj)
 signal ready
+signal earth_dominated
 
 func _ready():
 	#get_node("timer_shot").start()
@@ -52,6 +53,9 @@ func _on_timer_move_timeout():
 		if alien.get_global_pos().x < 10 and dir < 0:
 			dir = 1
 			border = true
+		
+		if alien.get_global_pos().y > 280:
+			emit_signal("earth_dominated")
 	
 	if border:
 		translate(Vector2(0, 8))

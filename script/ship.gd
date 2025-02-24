@@ -52,6 +52,11 @@ func start():
 	show()
 	set_process(true)
 
+func disable():
+	hide()
+	set_process(false)
+	alive = false
+
 func destroy(obj):
 	if alive:
 		alive = false

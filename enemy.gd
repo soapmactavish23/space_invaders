@@ -45,3 +45,7 @@ func next_frame():
 	else:
 		frame = 0
 	get_node("sprite").set_frame(frame)
+
+func _on_enemy_area_enter( area ):
+	if area.has_method("destroy"):
+		area.destroy(self)
