@@ -9,12 +9,22 @@ var pre_mother_ship = preload("res://scenes/mother_ship.tscn")
 var dir = 1
 
 signal enemy_down(obj)
+signal ready
 
 func _ready():
-	get_node("timer_shot").start()
+	#get_node("timer_shot").start()
 	restart_timer_mother_ship()
 	for alien in get_node("aliens").get_children():
+		alien.hide()
 		alien.connect("destroyed", self, "on_alien_destroied")
+	
+	for alien in get_node("aliens").get_children():
+		get_node("timer_pause").start()
+		yield(get_node("timer_pause"), "timeout")
+		alien.show()
+	
+	emit_signal("ready")
+	start_all()
 	
 
 func shoot():

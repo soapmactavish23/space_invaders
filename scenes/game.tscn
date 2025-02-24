@@ -18,7 +18,6 @@ script/script = ExtResource( 1 )
 
 [node name="alien_group" type="Node2D" parent="."]
 
-editor/display_folded = true
 script/script = ExtResource( 3 )
 
 [node name="aliens" type="Node2D" parent="alien_group"]
@@ -213,7 +212,7 @@ autostart = false
 process_mode = 1
 wait_time = 1.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="timer_mother_ship" type="Timer" parent="alien_group"]
 
@@ -222,11 +221,20 @@ wait_time = 1.0
 one_shot = true
 autostart = true
 
+[node name="timer_pause" type="Timer" parent="alien_group"]
+
+process_mode = 1
+wait_time = 0.02
+one_shot = true
+autostart = false
+
 [node name="mother_ship" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 208, 12 )
 
 [node name="shield" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="shield" parent="shield" instance=ExtResource( 6 )]
 

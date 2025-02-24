@@ -17,7 +17,8 @@ signal destroied
 signal respawn 
 
 func _ready():
-	set_process(true)
+	hide()
+	#set_process(true)
 	
 func _process(delta):
 	dir = 0
@@ -46,6 +47,10 @@ func _process(delta):
 		shot.set_global_pos(get_global_pos())
 		
 	prev_lazer = lazer
+
+func start():
+	show()
+	set_process(true)
 
 func destroy(obj):
 	if alive:
