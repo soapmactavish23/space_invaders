@@ -1,5 +1,9 @@
 extends Node
 
+var extra_life_points = [100, 350, 600]
+
+var extra_life_index = 0
+
 var score = 0
 var lifes = 3
 
@@ -14,6 +18,10 @@ func _ready():
 
 func on_alien_group_enemy_down(alien):
 	score += alien.score
+	if extra_life_index < extra_life_points.size() and score >= extra_life_points[extra_life_index]:
+		lifes += 1
+		get_node("HUD/life_draw").lifes = lifes
+		extra_life_index += 1
 	update_score()
 	
 func on_alien_group_ready():
