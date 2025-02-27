@@ -8,6 +8,8 @@ var pre_mother_ship = preload("res://scenes/mother_ship.tscn")
 
 var dir = 1
 
+var note = 1
+
 signal enemy_down(obj)
 signal ready
 signal earth_dominated
@@ -42,6 +44,12 @@ func _on_timer_shot_timeout():
 	shoot()
 
 func _on_timer_move_timeout():
+	
+	get_node("samples").play(str(note))
+	note += 1
+	if note > 4:
+		note = 1
+	
 	var border = false
 	
 	for alien in get_node("aliens").get_children():
