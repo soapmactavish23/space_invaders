@@ -13,6 +13,7 @@ func _ready():
 	get_node("alien_group").connect("enemy_down", self, "on_alien_group_enemy_down")
 	get_node("alien_group").connect("ready", self, "on_alien_group_ready")
 	get_node("alien_group").connect("earth_dominated", self, "on_alien_earth_dominated")
+	get_node("alien_group").connect("victory", self, "on_alien_group_victory")
 	get_node("ship").connect("destroied", self, "on_ship_destroied")
 	get_node("ship").connect("respawn", self, "on_ship_respawn")
 
@@ -49,3 +50,6 @@ func on_alien_earth_dominated():
 func game_over():
 	get_node("alien_group").stop_all()
 	get_node("ship").disable()
+	
+func on_alien_group_victory():
+	print("ganhou")

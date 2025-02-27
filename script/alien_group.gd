@@ -11,6 +11,7 @@ var dir = 1
 signal enemy_down(obj)
 signal ready
 signal earth_dominated
+signal victory
 
 func _ready():
 	#get_node("timer_shot").start()
@@ -30,17 +31,15 @@ func _ready():
 
 func shoot():
 	var n_aliens = get_node("aliens").get_child_count()
-	var alien = get_node("aliens").get_child(randi() % n_aliens)
-	var alien_shot = pre_alien_shot.instance()
-	get_parent().add_child(alien_shot)
-	alien_shot.set_global_pos(alien.get_global_pos())
-	
-
+	if n_aliens > 0:
+		var alien = get_node("aliens").get_child(randi() % n_aliens)
+		var alien_shot = pre_alien_shot.instance()
+		get_parent().add_child(alien_shot)
+		alien_shot.set_global_pos(alien.get_global_pos())
 
 func _on_timer_shot_timeout():
 	get_node("timer_shot").set_wait_time(rand_range(.5, 3))
 	shoot()
-
 
 func _on_timer_move_timeout():
 	var border = false
@@ -69,6 +68,9 @@ func on_alien_destroied(alien):
 	var alien_exp = pre_alien_explosion.instance()
 	get_parent().add_child(alien_exp)
 	alien_exp.set_global_pos(alien.get_global_pos())
+	if get_node("aliens").get_child_count() == 1:
+		stop_all()
+		emit_signal("victory")
 
 func _on_timer_mother_ship_timeout():
 	var mother_ship = pre_mother_ship.instance()
