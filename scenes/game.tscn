@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://script/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ship.tscn" type="PackedScene" id=2]
@@ -8,11 +8,13 @@
 [ext_resource path="res://samples/nota2.smp" type="Sample" id=6]
 [ext_resource path="res://samples/nota3.smp" type="Sample" id=7]
 [ext_resource path="res://samples/nota4.smp" type="Sample" id=8]
-[ext_resource path="res://scenes/mother_ship.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/shield.tscn" type="PackedScene" id=10]
-[ext_resource path="res://fonts/system.fnt" type="BitmapFont" id=11]
-[ext_resource path="res://script/life_draw.gd" type="Script" id=12]
-[ext_resource path="res://assets/sprites/Ship-sheet.png" type="Texture" id=13]
+[ext_resource path="res://samples/alien_explosion.smp" type="Sample" id=9]
+[ext_resource path="res://samples/alien_shot.smp" type="Sample" id=10]
+[ext_resource path="res://scenes/mother_ship.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/shield.tscn" type="PackedScene" id=12]
+[ext_resource path="res://fonts/system.fnt" type="BitmapFont" id=13]
+[ext_resource path="res://script/life_draw.gd" type="Script" id=14]
+[ext_resource path="res://assets/sprites/Ship-sheet.png" type="Texture" id=15]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -39,6 +41,18 @@ samples/4 = {
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 8 )
+}
+samples/alien_explosion = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+samples/alien_shot = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 10 )
 }
 
 [node name="game" type="Node"]
@@ -263,7 +277,7 @@ autostart = false
 
 [node name="samples" type="SamplePlayer" parent="alien_group"]
 
-config/polyphony = 1
+config/polyphony = 10
 config/samples = SubResource( 1 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
@@ -278,7 +292,7 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
-[node name="mother_ship" parent="." instance=ExtResource( 9 )]
+[node name="mother_ship" parent="." instance=ExtResource( 11 )]
 
 transform/pos = Vector2( 208, 12 )
 
@@ -286,19 +300,19 @@ transform/pos = Vector2( 208, 12 )
 
 editor/display_folded = true
 
-[node name="shield" parent="shield" instance=ExtResource( 10 )]
+[node name="shield" parent="shield" instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 48, 252 )
 
-[node name="shield1" parent="shield" instance=ExtResource( 10 )]
+[node name="shield1" parent="shield" instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 80, 252 )
 
-[node name="shield2" parent="shield" instance=ExtResource( 10 )]
+[node name="shield2" parent="shield" instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 112, 252 )
 
-[node name="shield3" parent="shield" instance=ExtResource( 10 )]
+[node name="shield3" parent="shield" instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 144, 252 )
 
@@ -314,7 +328,7 @@ margin/left = 140.0
 margin/top = 11.0
 margin/right = 201.0
 margin/bottom = 19.0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 13 )
 text = "9990999"
 align = 1
 percent_visible = 1.0
@@ -324,8 +338,8 @@ max_lines_visible = -1
 [node name="life_draw" type="Node2D" parent="HUD"]
 
 transform/pos = Vector2( 0, 10 )
-script/script = ExtResource( 12 )
-textura = ExtResource( 13 )
+script/script = ExtResource( 14 )
+textura = ExtResource( 15 )
 lifes = 3
 
 [connection signal="timeout" from="alien_group/timer_shot" to="alien_group" method="_on_timer_shot_timeout"]

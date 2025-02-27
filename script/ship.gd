@@ -42,6 +42,7 @@ func _process(delta):
 		set_global_pos(Vector2(173, get_global_pos().y))
 	
 	if lazer and not prev_lazer and get_tree().get_nodes_in_group("ship_shot").size() == 0:
+		get_node("sample").play("ship_shoot")
 		var shot = prev_shot.instance()
 		get_parent().add_child(shot)
 		shot.set_global_pos(get_global_pos())
@@ -59,6 +60,7 @@ func disable():
 
 func destroy(obj):
 	if alive:
+		get_node("sample").play("ship_explosion")
 		alive = false
 		set_process(false)
 		emit_signal("destroied")

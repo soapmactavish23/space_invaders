@@ -40,6 +40,7 @@ func shoot():
 		alien_shot.set_global_pos(alien.get_global_pos())
 
 func _on_timer_shot_timeout():
+	get_node("samples").play("alien_shot")
 	get_node("timer_shot").set_wait_time(rand_range(.5, 3))
 	shoot()
 
@@ -72,6 +73,7 @@ func _on_timer_move_timeout():
 		translate(vel * dir)
 	
 func on_alien_destroied(alien):
+	get_node("samples").play("alien_explosion")
 	emit_signal("enemy_down", alien)
 	var alien_exp = pre_alien_explosion.instance()
 	get_parent().add_child(alien_exp)
