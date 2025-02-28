@@ -8,6 +8,7 @@ var score = 0
 var lifes = 3
 
 signal game_over
+signal victory
 
 func _ready():
 	randomize()
@@ -23,15 +24,22 @@ func on_alien_group_enemy_down(alien):
 	score += alien.score
 	if extra_life_index < extra_life_points.size() and score >= extra_life_points[extra_life_index]:
 		lifes += 1
-		get_node("HUD/life_draw").lifes = lifes
+		update_lifes()
 		extra_life_index += 1
 	update_score()
 	
 func on_alien_group_ready():
 	get_node("ship").start()
+	
+func update_lifes():
+	get_node("HUD/life_draw").lifes = lifes
 
 func update_score():
 	get_node("HUD/score").set_text(str(score))
+
+func update_hud():
+	update_score()
+	update_lifes()
 
 func on_ship_destroied():
 	get_node("alien_group").stop_all()
@@ -55,4 +63,6 @@ func game_over():
 	emit_signal("game_over")
 	
 func on_alien_group_victory():
-	print("ganhou")
+	get_node("alien_group").stop_all()
+	get_node("ship").disable()
+	emit_signal("victory")
