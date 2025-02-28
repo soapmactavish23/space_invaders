@@ -7,6 +7,8 @@ var extra_life_index = 0
 var score = 0
 var lifes = 3
 
+signal game_over
+
 func _ready():
 	randomize()
 	update_score()
@@ -50,6 +52,7 @@ func on_alien_earth_dominated():
 func game_over():
 	get_node("alien_group").stop_all()
 	get_node("ship").disable()
+	emit_signal("game_over")
 	
 func on_alien_group_victory():
 	print("ganhou")
