@@ -27,10 +27,6 @@ func on_game_over():
 	get_node("btn_new_game").show()
 
 func on_victory():
-	extra_life_index = game.extra_life_index
-	score = game.score
-	lifes = game.lifes
+	var data = game.data
 	new_game()
-	game.extra_life_index = extra_life_index
-	game.score = score
-	game.lifes = lifes
+	game.data = data
