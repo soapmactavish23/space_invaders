@@ -60,4 +60,7 @@ func on_victory():
 	game.data = data
 
 func on_name_selector_finished(val):
-	pass
+	var index = hiscores.find(hiscore)
+	hiscores.insert(index, {name = val, score = game.data.score})
+	hiscores.resize(10)
+	
