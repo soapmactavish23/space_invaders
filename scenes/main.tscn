@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://script/main.gd" type="Script" id=1]
+[ext_resource path="res://scenes/hiscore.tscn" type="PackedScene" id=2]
 
 [node name="main" type="Node"]
 
@@ -12,15 +13,22 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 68.0
-margin/top = 196.0
-margin/right = 110.0
-margin/bottom = 216.0
+margin/left = 69.0
+margin/top = 255.0
+margin/right = 111.0
+margin/bottom = 275.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Jogar"
 flat = false
+
+[node name="hiscore" parent="." instance=ExtResource( 2 )]
+
+margin/left = 1.0
+margin/top = 89.0
+margin/right = 181.0
+margin/bottom = 237.0
 
 [connection signal="pressed" from="btn_new_game" to="." method="_on_Button_pressed"]
 

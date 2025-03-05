@@ -23,7 +23,7 @@ var score = 0
 var lifes = 3
 
 func _ready():
-	pass
+	get_node("hiscore").show_hiscores(hiscores)
 	
 func new_game():
 	if game != null:
@@ -36,6 +36,7 @@ func new_game():
 
 func _on_Button_pressed():
 	get_node("btn_new_game").hide()
+	get_node("hiscore").hide()
 	new_game()
 
 func on_game_over():
