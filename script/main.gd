@@ -1,5 +1,6 @@
 extends Node
 
+const hiscore_file = "user://hiscore_file"
 var pre_name_selector = preload("res://scenes/name_selector.tscn")
 var pre_game = preload("res://scenes/game.tscn")
 var game
@@ -29,7 +30,7 @@ func new_game():
 	if game != null:
 		game.queue_free()
 	game = pre_game.instance()
-	add_child(game)
+	get_node("game_node").add_child(game)
 	game.connect("game_over", self, "on_game_over")
 	game.connect("victory", self, "on_victory")
 
@@ -52,6 +53,7 @@ func on_game_over():
 		name_selector.connect("finished", self, "on_name_selector_finished")
 		yield(name_selector, "finished")
 		name_selector.queue_free()
+		save_history()
 	
 	get_node("btn_new_game").show()
 	get_node("hiscore").show()
@@ -66,4 +68,17 @@ func on_name_selector_finished(val):
 	var index = hiscores.find(hiscore)
 	hiscores.insert(index, {name = val, score = game.data.score})
 	hiscores.resize(10)
+
+func save_history():
+	var file = File.new()
+	var result = file.open(hiscore_file, file.WRITE)
+	if result == OK:
+		var score_hiscore = {
+			hiscores = hiscores
+		}
+		file.store_string(store_hiscore.to_json())
+		file.close()
+		
+	
+	
 	

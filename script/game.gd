@@ -61,6 +61,7 @@ func on_alien_earth_dominated():
 func game_over():
 	get_node("alien_group").stop_all()
 	get_node("ship").disable()
+	get_node("ship").queue_free()
 	emit_signal("game_over")
 	
 func on_alien_group_victory():

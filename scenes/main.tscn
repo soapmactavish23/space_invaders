@@ -7,6 +7,8 @@
 
 script/script = ExtResource( 1 )
 
+[node name="game_node" type="Node" parent="."]
+
 [node name="btn_new_game" type="Button" parent="."]
 
 focus/ignore_mouse = false

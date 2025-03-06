@@ -65,6 +65,7 @@ transform/pos = Vector2( 90, 280 )
 
 [node name="alien_group" type="Node2D" parent="."]
 
+editor/display_folded = true
 script/script = ExtResource( 3 )
 
 [node name="aliens" type="Node2D" parent="alien_group"]
@@ -317,6 +318,8 @@ transform/pos = Vector2( 112, 252 )
 transform/pos = Vector2( 144, 252 )
 
 [node name="HUD" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="score" type="Label" parent="HUD"]
 
