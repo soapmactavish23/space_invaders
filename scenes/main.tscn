@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://script/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hiscore.tscn" type="PackedScene" id=2]
+[ext_resource path="res://shaders/shader_mirage_code.tres" type="Shader" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+shader/shader = ExtResource( 3 )
+shader/shading_mode = 0
+shader_param/frequency = 60.0
+shader_param/depth = 0.005
 
 [node name="main" type="Node"]
 
@@ -27,10 +35,23 @@ flat = false
 
 [node name="hiscore" parent="." instance=ExtResource( 2 )]
 
-margin/left = 1.0
-margin/top = 89.0
-margin/right = 181.0
-margin/bottom = 237.0
+margin/left = 2.0
+margin/top = 88.0
+margin/right = 182.0
+margin/bottom = 225.0
+
+[node name="wave_fx" type="ColorFrame" parent="."]
+
+material/material = SubResource( 1 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 88.0
+margin/right = 180.0
+margin/bottom = 225.0
+color = Color( 1, 1, 1, 1 )
 
 [connection signal="pressed" from="btn_new_game" to="." method="_on_Button_pressed"]
 

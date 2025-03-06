@@ -5,6 +5,7 @@ var pre_name_selector = preload("res://scenes/name_selector.tscn")
 var pre_game = preload("res://scenes/game.tscn")
 var game
 var hiscore
+var store_hiscore
 
 var hiscores = [
 	{name = "AAA", score = 1000},
@@ -38,6 +39,7 @@ func new_game():
 func _on_Button_pressed():
 	get_node("btn_new_game").hide()
 	get_node("hiscore").hide()
+	get_node("wave_fx").hide()
 	new_game()
 
 func on_game_over():
@@ -57,6 +59,7 @@ func on_game_over():
 	
 	get_node("btn_new_game").show()
 	get_node("hiscore").show()
+	get_node("wave_fx").show()
 	get_node("hiscore").show_hiscores(hiscores)
 
 func on_victory():
@@ -79,6 +82,13 @@ func save_history():
 		file.store_string(store_hiscore.to_json())
 		file.close()
 		
-	
-	
+func load_score():
+	var file = File.new()
+	var result = file.open(hiscore_file, file.READ)
+	if result == OK:
+		var text = file.get_as_text()
+		var store_hiscore = {}
+		store_hiscore.parse_json(text)
+		hiscores = store_hiscore.hiscores
+		file.close()
 	
