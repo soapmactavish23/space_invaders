@@ -35,11 +35,8 @@ func _process(delta):
 	
 	translate(Vector2(1, 0) * VEL * dir * delta)
 	
-	if get_global_pos().x < 7:
-		set_global_pos(Vector2(7, get_global_pos().y))
-		
-	if get_global_pos().x > 173:
-		set_global_pos(Vector2(173, get_global_pos().y))
+	set_global_pos(Vector2(clamp(get_global_pos().x, 7, 173), get_global_pos().y))
+	
 	
 	if lazer and not prev_lazer and get_tree().get_nodes_in_group("ship_shot").size() == 0:
 		get_node("sample").play("ship_shoot")
