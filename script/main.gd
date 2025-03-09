@@ -6,6 +6,7 @@ var pre_game = preload("res://scenes/game.tscn")
 var game
 var hiscore
 var store_hiscore
+var password = [52, 36, 78, 101, 75, 90, 120, 87, 61, 111, 37, 85]
 
 var hiscores = [
 	{name = "AAA", score = 1000},
@@ -74,7 +75,7 @@ func on_name_selector_finished(val):
 
 func save_history():
 	var file = File.new()
-	var result = file.open(hiscore_file, file.WRITE)
+	var result = file.open_encrypted_with_pass(hiscore_file, file.WRITE, RawArray(password).get_string_from_utf8())
 	if result == OK:
 		var score_hiscore = {
 			hiscores = hiscores
@@ -84,7 +85,7 @@ func save_history():
 		
 func load_score():
 	var file = File.new()
-	var result = file.open(hiscore_file, file.READ)
+	var result = file.open_encrypted_with_pass(hiscore_file, file.READ, RawArray(password).get_string_from_utf8())
 	if result == OK:
 		var text = file.get_as_text()
 		var store_hiscore = {}
