@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://script/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hiscore.tscn" type="PackedScene" id=2]
-[ext_resource path="res://shaders/shader_mirage_code.tres" type="Shader" id=3]
+[ext_resource path="res://fonts/system.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://shaders/shader_mirage_code.tres" type="Shader" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
-shader/shader = ExtResource( 3 )
+shader/shader = ExtResource( 4 )
 shader/shading_mode = 0
 shader_param/frequency = 60.0
 shader_param/depth = 0.005
@@ -23,14 +24,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 69.0
+margin/left = 70.0
 margin/top = 255.0
-margin/right = 111.0
+margin/right = 112.0
 margin/bottom = 275.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Jogar"
+text = "PLAY"
 flat = false
 
 [node name="hiscore" parent="." instance=ExtResource( 2 )]
@@ -39,6 +40,24 @@ margin/left = 2.0
 margin/top = 88.0
 margin/right = 182.0
 margin/bottom = 225.0
+
+[node name="best" type="Label" parent="hiscore"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 180.0
+margin/bottom = 14.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.828125, 0, 1, 1 )
+text = "BEST_PLAYERS"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="wave_fx" type="ColorFrame" parent="."]
 
