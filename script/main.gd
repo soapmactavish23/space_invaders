@@ -42,6 +42,7 @@ func _on_Button_pressed():
 	get_node("title").hide()
 	get_node("hiscore").hide()
 	get_node("wave_fx").hide()
+	get_node("btn_options").hide()
 	new_game()
 
 func on_game_over():
@@ -63,6 +64,7 @@ func on_game_over():
 	get_node("title").hide()
 	get_node("hiscore").show()
 	get_node("wave_fx").show()
+	get_node("btn_options").show()
 	get_node("hiscore").show_hiscores(hiscores)
 
 func on_victory():
@@ -95,3 +97,7 @@ func load_score():
 		hiscores = store_hiscore.hiscores
 		file.close()
 	
+
+func _on_btn_options_pressed():
+	get_node("tween_camera").interpolate_property(get_node("camera"), "transform/pos", Vector2(0,0), Vector2(-180, 0), 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)
+	get_node("tween_camera").start()
