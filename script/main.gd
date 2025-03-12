@@ -105,3 +105,7 @@ func _on_btn_options_pressed():
 func _on_volume_control_value_changed( value ):
 	AudioServer.set_fx_global_volume_scale(value)
 	get_node("options/sample").play("ship_shoot")
+
+
+func _on_music_control_value_changed( value ):
+	AudioServer.set_fx_global_volume_scale(value)

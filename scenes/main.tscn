@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=1]
+[gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://script/main.gd" type="Script" id=1]
 [ext_resource path="res://fonts/system_b.fnt" type="BitmapFont" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/sprites/slide_grab_texture.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/slide_texture.png" type="Texture" id=8]
 [ext_resource path="res://samples/ship_shoot.smp" type="Sample" id=9]
+[ext_resource path="res://music/ObservingTheStar.ogg" type="AudioStream" id=10]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -252,7 +253,25 @@ margin/top = 57.0
 margin/right = 166.0
 margin/bottom = 88.0
 custom_fonts/font = ExtResource( 2 )
-text = "SOUND_FX"
+text = "EFEITOS"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="sound_fx1" type="Label" parent="options"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 17.0
+margin/top = 132.0
+margin/right = 166.0
+margin/bottom = 163.0
+custom_fonts/font = ExtResource( 2 )
+text = "USICAS"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -269,6 +288,29 @@ margin/left = 19.0
 margin/top = 91.0
 margin/right = 166.0
 margin/bottom = 107.0
+custom_styles/grabber_hilite = SubResource( 7 )
+custom_styles/grabber = SubResource( 7 )
+custom_styles/scroll_focus = SubResource( 7 )
+custom_styles/scroll = SubResource( 8 )
+range/min = 0.0
+range/max = 1.0
+range/step = 0.1
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+custom_step = -1.0
+
+[node name="music_control" type="HScrollBar" parent="options"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 19.0
+margin/top = 164.0
+margin/right = 166.0
+margin/bottom = 180.0
 custom_styles/grabber_hilite = SubResource( 7 )
 custom_styles/grabber = SubResource( 7 )
 custom_styles/scroll_focus = SubResource( 7 )
@@ -325,10 +367,23 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
+[node name="stream" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 10 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
 [connection signal="pressed" from="btn_new_game" to="." method="_on_Button_pressed"]
 
 [connection signal="pressed" from="btn_options" to="." method="_on_btn_options_pressed"]
 
 [connection signal="value_changed" from="options/volume_control" to="." method="_on_volume_control_value_changed"]
+
+[connection signal="value_changed" from="options/music_control" to="." method="_on_music_control_value_changed"]
 
 
