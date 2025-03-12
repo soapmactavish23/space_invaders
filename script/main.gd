@@ -101,3 +101,7 @@ func load_score():
 func _on_btn_options_pressed():
 	get_node("tween_camera").interpolate_property(get_node("camera"), "transform/pos", Vector2(0,0), Vector2(-180, 0), 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)
 	get_node("tween_camera").start()
+
+func _on_volume_control_value_changed( value ):
+	AudioServer.set_fx_global_volume_scale(value)
+	get_node("options/sample").play("ship_shoot")
