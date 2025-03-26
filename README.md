@@ -18,7 +18,11 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ## 📷 Video Demonstrativo
 
 <div>
-<a href="https://youtu.be/w1Cnst_N-F0" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" target="_blank"></a>
+
+
+https://github.com/user-attachments/assets/a2922fcb-f285-40c4-bf00-199270721f13
+
+
 </div>
 
 ## 🖥️ Plataforma adotada
