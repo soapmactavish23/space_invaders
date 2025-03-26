@@ -198,6 +198,7 @@ offset = Vector2( 91, 46 )
 
 [node name="options" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( -180, 0 )
 
 [node name="title" type="Label" parent="options"]

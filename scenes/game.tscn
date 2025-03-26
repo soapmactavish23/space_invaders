@@ -319,18 +319,16 @@ transform/pos = Vector2( 144, 252 )
 
 [node name="HUD" type="Node" parent="."]
 
-editor/display_folded = true
-
 [node name="score" type="Label" parent="HUD"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 140.0
-margin/top = 11.0
-margin/right = 201.0
-margin/bottom = 19.0
+margin/left = 126.0
+margin/top = 12.0
+margin/right = 187.0
+margin/bottom = 20.0
 custom_fonts/font = ExtResource( 13 )
 text = "9990999"
 align = 1
